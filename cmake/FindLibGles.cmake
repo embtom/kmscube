@@ -1,0 +1,12 @@
+find_path(LIBGLES_INCLUDE_DIRS NAMES GLES2/gl2.h)
+find_library(GLES_LIBRARY GLESv2)
+include(FindPackageHandleStandardArgs)
+find_package_handle_standard_args(LibGles DEFAULT_MSG GLES_LIBRARY LIBGLES_INCLUDE_DIRS)
+mark_as_advanced(LIBGLES_INCLUDE_DIRS GLES_LIBRARY)
+if(LIBGLES_FOUND)
+    message(STATUS "libGles found with ${LIBGLES_INCLUDE_DIRS} - ${GLES_LIBRARY}")
+    add_library(LIBGLES::LIBGLES UNKNOWN IMPORTED)
+    set_target_properties(LIBGLES::LIBGLES PROPERTIES
+      IMPORTED_LOCATION "${GLES_LIBRARY}"
+      INTERFACE_INCLUDE_DIRECTORIES "${LIBGLES_INCLUDE_DIRS}")
+endif()
