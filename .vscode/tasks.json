@@ -1,0 +1,37 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "kmscube deploy",
+            "type": "shell",
+            "command": "${workspaceRoot}/.vscode/deploy.sh",
+            "args": [
+                "${workspaceRoot}/build/Debug",
+                "192.168.1.9",
+                "/tmp"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "kmscube gdbserver",
+            "type": "shell",
+            "command": "${workspaceRoot}/.vscode/startGdbserver.sh",
+            "args": [
+                "192.168.1.9",
+                "/tmp/kmscube"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+
+    ]
+}

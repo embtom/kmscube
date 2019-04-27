@@ -1,0 +1,43 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "kmscube",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/Debug/kmscube",
+            "args": [],
+            "stopAtEntry": true,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "gdb",
+            "miDebuggerServerAddress": "192.168.1.9:9091",
+            "miDebuggerPath": "/opt/imx53dk/sysroots/x86_64-pokysdk-linux/usr/bin/arm-poky-linux/arm-poky-linux-gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "kmscube gdbserver",
+            "type": "gdb",
+            "request": "attach",
+            "executable": "${workspaceFolder}/build/Debug/kmscube",
+            "target": "192.168.1.9:9091",
+            "remote": true,
+            "cwd": "${workspaceRoot}", 
+            "gdbpath": "/opt/imx53dk/sysroots/x86_64-pokysdk-linux/usr/bin/arm-poky-linux/arm-poky-linux-gdb",
+            "autorun" : [
+                "set sysroot /opt/imx53dk/sysroots/armv7a-neon-poky-linux-gnueabi",
+                "set substitute-path /usr/src/debug /opt/imx53dk/sysroots/armv7a-neon-poky-linux-gnueabi/usr/src/debug"
+            ]
+        }
+    ]
+}
