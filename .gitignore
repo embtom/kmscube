@@ -13,4 +13,5 @@ tags
 TAGS
 build-aux
 build*
+.vscode/ipch
 
