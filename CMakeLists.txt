@@ -24,3 +24,6 @@ SET(KMSCUBE_SOURCES common.c
 add_executable(${PROJECT_NAME} ${KMSCUBE_SOURCES})                    
 target_include_directories(${PROJECT_NAME} PRIVATE ./)
 target_link_libraries(${PROJECT_NAME} LIBGBM::LIBGBM LIBDRM::LIBDRM LIBM::LIBM LIBEGL::LIBEGL LIBGLES::LIBGLES)
+
+include(GNUInstallDirs)
+install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
